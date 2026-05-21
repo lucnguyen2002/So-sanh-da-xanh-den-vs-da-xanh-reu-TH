@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Tin Tức Đá Tự Nhiên - Thanh Thanh Tùng Stone</title> -->
+    <title>Thanh Thanh Tùng Stone</title>
+
+    <link rel="icon" type="image/png" href="image/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* RESET & CHUNG */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* HEADER STYLE - ĐÃ TỐI ƯU */
+      .minimal-header {
+        background: #ffffff;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        height: 80px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+      }
+      .logo h1 {
+        font-size: 24px;
+        color: #fe7201; /* Màu cam thương hiệu */
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+      }
+
+      .btn-call {
+        background: #fe7201;
+        color: #fff !important;
+        padding: 10px 20px;
+        border-radius: 50px; /* Bo tròn hiện đại */
+        font-weight: 700;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(254, 114, 1, 0.2);
+      }
+      .btn-call:hover {
+        background: #e66701;
+        transform: translateY(-2px);
+      }
+
+      /* NỘI DUNG CHÍNH */
+      main {
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        margin: 0px auto;
+        /* max-width: 1200px; */
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+      }
+
+      /* FOOTER STYLE */
+      .main-footer {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 70px 0 20px;
+        /* margin-top: 50px; */
+      }
+      .main-footer .container {
+        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr; /* Chia cột đều hơn */
+        gap: 40px;
+      }
+      .footer-col h3 {
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 12px;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: #fe7201;
+      }
+      .footer-col p {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 15px;
+      }
+      .footer-col ul li {
+        margin-bottom: 12px;
+      }
+      .footer-col ul li a {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+      .footer-col ul li a:hover {
+        color: #fe7201;
+        opacity: 1;
+        padding-left: 8px;
+      }
+      .social-links {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+      }
+      .social-links a {
+        font-size: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      .social-links a:hover {
+        background: #fe7201;
+      }
+      .footer-bottom {
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 50px;
+        padding-top: 25px;
+        font-size: 13px;
+        opacity: 0.6;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .main-footer .container {
+          grid-template-columns: 1fr;
+        }
+        .btn-call span {
+          display: none; /* Ẩn chữ trên mobile cho gọn */
+        }
+        .logo h1 {
+          font-size: 18px;
+        }
+      }
+      /* ------------------------------------------------------------------------------------------------------------ */
+    </style>
+
+    <style>
+      .article-detail {
+        max-width: 950px;
+        margin: 60px auto;
+        background: #f5f5f5;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+      }
+
+      .article-container {
+        background: #fff;
+        padding: 45px;
+      }
+
+      .article-container h1 {
+        font-size: 38px;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        color: #222;
+      }
+
+      .article-meta {
+        display: flex;
+        gap: 20px;
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+
+      .article-container h2 {
+        margin-top: 40px;
+        margin-bottom: 18px;
+        color: #fe7201;
+        font-size: 30px;
+      }
+
+      .article-container h3 {
+        margin-top: 25px;
+        margin-bottom: 12px;
+        color: #333;
+        font-size: 22px;
+      }
+
+      .article-container p {
+        margin-bottom: 18px;
+        font-size: 17px;
+        line-height: 1.9;
+        color: #444;
+        text-align: justify;
+      }
+
+      .article-container ul {
+        margin: 15px 0 25px 20px;
+      }
+
+      .article-container ul li {
+        margin-bottom: 12px;
+        line-height: 1.8;
+        color: #444;
+      }
+
+      .article-container img {
+        width: 100%;
+        border-radius: 10px;
+        margin: 30px 0;
+        transition: 0.4s;
+      }
+
+      .article-container img:hover {
+        transform: scale(1.02);
+      }
+
+      @media (max-width: 768px) {
+        .article-container {
+          padding: 25px 18px;
+        }
+
+        .article-container h1 {
+          font-size: 28px;
+        }
+
+        .article-container h2 {
+          font-size: 24px;
+        }
+
+        .article-container h3 {
+          font-size: 20px;
+        }
+
+        .article-meta {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .article-container p,
+        .article-container ul li {
+          font-size: 16px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+          font-size: 14px;
+          padding: 12px;
+        }
+      }
+
+      .contact-box {
+        margin-top: 40px;
+        background: #f5f5f5;
+        padding: 12px;
+        border-left: 5px solid #fe7201;
+        border-radius: 8px;
+      }
+      .contact-box h3 {
+        margin-bottom: 15px;
+        color: #fe7201;
+      }
+      .cb {
+        color: #fe7201;
+      }
+      .ca:hover {
+        color: #e66701;
+      }
+
+      .comparison-table table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .comparison-table thead {
+        background: #fe7201;
+        color: #fff;
+      }
+
+      .comparison-table th {
+        padding: 16px;
+        text-align: left;
+        font-size: 16px;
+      }
+
+      .comparison-table td {
+        padding: 15px 16px;
+        border-bottom: 1px solid #eee;
+        font-size: 15px;
+        color: #444;
+        line-height: 1.7;
+      }
+
+      .comparison-table tbody tr:nth-child(even) {
+        background: #fafafa;
+      }
+
+      .comparison-table tbody tr:hover {
+        background: #fff4eb;
+        transition: 0.3s;
+      }
+      .stone-link {
+        color: #fe7201;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .stone-link:hover {
+        color: #d95f00;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="minimal-header">
+      <div class="container">
+        <div class="logo">
+          <a href="https://thanhthanhtungstone.com/">
+            <h1>THANH THANH TÙNG STONE</h1>
+          </a>
+        </div>
+        <div class="header-right">
+          <a href="tel:0979298888" class="btn-call">
+            <i class="fa fa-phone"></i> <span>097 929 8888</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="article-detail">
+        <article class="article-container">
+          <h1>
+            So Sánh Đá Xanh Đen Và Đá Xanh Rêu Thanh Hóa – Nên Chọn Loại Nào Cho
+            Công Trình?
+          </h1>
+
+          <div class="article-meta">
+            <span><i class="fa fa-calendar"></i> Ngày đăng: 21/05/2026</span>
+            <span><i class="fa fa-user"></i> Thanh Thanh Tùng Stone</span>
+          </div>
+
+          <p>
+            Trong lĩnh vực đá tự nhiên hiện nay,
+            <strong>
+              <a
+                href="https://thanhthanhtungstone.com/chat-lieu/da-xanh-den"
+                class="stone-link"
+              >
+                đá xanh đen
+              </a>
+            </strong>
+            và
+            <strong>
+              <a
+                href="https://thanhthanhtungstone.com/chat-lieu/da-xanh-reu"
+                class="stone-link"
+              >
+                đá xanh rêu Thanh Hóa
+              </a>
+            </strong>
+            là hai dòng vật liệu được sử dụng rất phổ biến trong các công trình
+            sân vườn, biệt thự, khu nghỉ dưỡng và hạ tầng ngoài trời. Cả hai đều
+            nổi bật nhờ độ bền cao, khả năng chịu lực tốt và vẻ đẹp tự nhiên đặc
+            trưng. Tuy nhiên, mỗi loại đá lại sở hữu màu sắc, tính thẩm mỹ và
+            ứng dụng riêng biệt phù hợp với từng nhu cầu sử dụng khác nhau. 🌿
+          </p>
+          <p>
+            Nhiều khách hàng khi lựa chọn vật liệu thường phân vân không biết
+            nên sử dụng đá xanh đen hay đá xanh rêu để phù hợp với phong cách
+            thiết kế và ngân sách công trình. Để giúp bạn dễ dàng đưa ra lựa
+            chọn hơn, hãy cùng Thanh Thanh Tùng Stone so sánh chi tiết hai dòng
+            đá tự nhiên nổi bật này nhé! ✨
+          </p>
+
+          <!-- <img
+            src="image/da-xanh-den-va-xanh-reu.jpg"
+            alt="So sánh đá xanh đen và đá xanh rêu Thanh Hóa"
+            loading="lazy"
+          /> -->
+
+          <h2>1. Đặc điểm của đá xanh đen Thanh Hóa</h2>
+
+          <p>
+            Đá xanh đen là dòng đá tự nhiên có màu ghi đen hoặc xám đậm đặc
+            trưng, được khai thác chủ yếu tại Thanh Hóa. Đây là loại đá có kết
+            cấu cứng, khả năng chịu lực tốt và ít bị ảnh hưởng bởi điều kiện
+            thời tiết ngoài trời.
+          </p>
+
+          <p>
+            Bề mặt đá xanh đen thường được gia công theo nhiều kiểu khác nhau
+            như khò lửa, băm mặt, mài honed hoặc cắt thô tự nhiên nhằm đáp ứng
+            đa dạng nhu cầu sử dụng. Với gam màu mạnh mẽ và hiện đại, loại đá
+            này thường mang lại cảm giác sang trọng, sạch sẽ và chắc chắn cho
+            công trình.
+          </p>
+
+          <p>
+            Đá xanh đen được ứng dụng nhiều trong lát sân, lát vỉa hè, bậc tam
+            cấp, lối đi sân vườn hoặc các công trình công cộng yêu cầu độ bền
+            cao và khả năng chống trơn tốt. 🚶
+          </p>
+
+          <img
+            src="image/ct-30x30-1.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+
+          <h2>2. Đặc điểm của đá xanh rêu Thanh Hóa 🌿</h2>
+
+          <p>
+            Đá xanh rêu cũng là dòng đá tự nhiên nổi tiếng của Thanh Hóa nhưng
+            sở hữu màu xanh rêu đặc trưng vô cùng tự nhiên và độc đáo. So với đá
+            xanh đen, màu sắc của đá xanh rêu tạo cảm giác mềm mại, cổ điển và
+            gần gũi hơn với thiên nhiên.
+          </p>
+
+          <p>
+            Một trong những điểm nổi bật của đá xanh rêu là khả năng lên màu đẹp
+            sau thời gian dài sử dụng. Khi gặp nước hoặc dưới ánh sáng tự nhiên,
+            màu đá thường trở nên đậm và nổi bật hơn, giúp công trình mang nét
+            sang trọng nhưng vẫn giữ được vẻ mộc mạc riêng biệt. ✨
+          </p>
+
+          <p>
+            Đá xanh rêu thường được sử dụng cho sân vườn biệt thự, khu nghỉ
+            dưỡng, nhà thờ họ, công trình tâm linh hoặc những không gian mang
+            phong cách truyền thống và thiên nhiên.
+          </p>
+
+          <img
+            src="image/ct-30x30-3.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+
+          <h2>3. So sánh đá xanh đen và đá xanh rêu Thanh Hóa ⚖️</h2>
+
+          <h3>🎨 Về màu sắc và thẩm mỹ</h3>
+
+          <p>
+            Đá xanh đen có màu tối hiện đại, phù hợp với các công trình mang
+            phong cách tối giản hoặc kiến trúc hiện đại. Trong khi đó, đá xanh
+            rêu lại thiên về vẻ đẹp cổ điển, tự nhiên và có chiều sâu hơn theo
+            thời gian.
+          </p>
+
+          <p>
+            Nếu bạn yêu thích không gian sang trọng, mạnh mẽ và sạch sẽ thì đá
+            xanh đen là lựa chọn phù hợp. Ngược lại, nếu muốn tạo cảm giác gần
+            gũi thiên nhiên hoặc mang nét truyền thống thì đá xanh rêu sẽ nổi
+            bật hơn. 🌱
+          </p>
+
+          <h3>💪 Về độ bền</h3>
+
+          <p>
+            Cả hai dòng đá đều có độ cứng cao, khả năng chịu lực và chống chịu
+            thời tiết rất tốt. Đây đều là những dòng đá tự nhiên phù hợp với khí
+            hậu nóng ẩm tại Việt Nam và có thể sử dụng ổn định trong nhiều năm
+            ngoài trời.
+          </p>
+
+          <p>
+            Tuy nhiên, đá xanh đen thường được đánh giá nhỉnh hơn đôi chút về
+            khả năng giữ màu đồng đều và hạn chế rêu mốc trong môi trường có độ
+            ẩm cao.
+          </p>
+
+          <h3>🚶 Về khả năng chống trơn</h3>
+
+          <p>
+            Khi được gia công khò mặt hoặc băm mặt, cả đá xanh đen và xanh rêu
+            đều có khả năng chống trơn rất tốt. Điều này giúp hai dòng đá trở
+            thành lựa chọn phổ biến cho sân vườn, lối đi hoặc khu vực quanh hồ
+            bơi.
+          </p>
+
+          <h3>💰 Về giá thành</h3>
+
+          <p>
+            Thông thường, đá xanh rêu có giá thành cao hơn đá xanh đen do màu
+            sắc đẹp và nguồn đá tuyển chọn kỹ hơn. Những công trình yêu cầu tính
+            thẩm mỹ cao hoặc mang phong cách cao cấp thường ưu tiên sử dụng đá
+            xanh rêu để tạo điểm nhấn riêng biệt.
+          </p>
+          <img
+            src="image/16879455681ew.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+          <img
+            src="image/ct-30x30.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tiêu chí</th>
+                  <th>Đá xanh đen</th>
+                  <th>Đá xanh rêu</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Màu sắc</td>
+                  <td>Ghi đen, xám đậm hiện đại</td>
+                  <td>Xanh rêu tự nhiên, cổ điển</td>
+                </tr>
+
+                <tr>
+                  <td>Phong cách phù hợp</td>
+                  <td>Hiện đại, tối giản</td>
+                  <td>Truyền thống, sân vườn thiên nhiên</td>
+                </tr>
+
+                <tr>
+                  <td>Độ bền</td>
+                  <td>Rất cao</td>
+                  <td>Rất cao</td>
+                </tr>
+
+                <tr>
+                  <td>Khả năng chống trơn</td>
+                  <td>Tốt khi khò hoặc băm mặt</td>
+                  <td>Tốt khi khò hoặc băm mặt</td>
+                </tr>
+
+                <tr>
+                  <td>Khả năng giữ màu</td>
+                  <td>Ổn định, đồng đều</td>
+                  <td>Lên màu đẹp theo thời gian</td>
+                </tr>
+
+                <tr>
+                  <td>Giá thành</td>
+                  <td>Tiết kiệm hơn</td>
+                  <td>Cao hơn</td>
+                </tr>
+
+                <tr>
+                  <td>Ứng dụng phổ biến</td>
+                  <td>Vỉa hè, sân lát, công trình công cộng</td>
+                  <td>Biệt thự, resort, nhà thờ họ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <img
+            src="image/xanh-den-ct-4.jpg"
+            alt="Đá xanh đen Thanh Hóa"
+            loading="lazy"
+          />
+          <img
+            src="image/16899311950y5.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+
+          <h2>4. Nên chọn đá xanh đen hay đá xanh rêu? 🤔</h2>
+
+          <p>
+            Việc lựa chọn loại đá phù hợp phụ thuộc vào phong cách thiết kế, nhu
+            cầu sử dụng và ngân sách của từng công trình.
+          </p>
+
+          <ul>
+            <li>
+              ✅ Chọn đá xanh đen nếu bạn yêu thích phong cách hiện đại, tối
+              giản và cần tối ưu chi phí.
+            </li>
+
+            <li>
+              ✅ Chọn đá xanh rêu nếu muốn không gian mang vẻ đẹp tự nhiên, cổ
+              điển và sang trọng hơn.
+            </li>
+
+            <li>
+              ✅ Với các công trình sân vườn cao cấp hoặc resort nghỉ dưỡng, đá
+              xanh rêu thường tạo hiệu ứng thẩm mỹ nổi bật hơn theo thời gian.
+            </li>
+          </ul>
+
+          <p>
+            Dù lựa chọn dòng đá nào thì việc sử dụng đá tự nhiên chất lượng và
+            thi công đúng kỹ thuật vẫn là yếu tố quan trọng giúp công trình bền
+            đẹp lâu dài. 🏡
+          </p>
+          <img
+            src="image/ct-30x30-5.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+          <img
+            src="image/gia-co-1.jpg"
+            alt="Đá xanh rêu Thanh Hóa tự nhiên"
+            loading="lazy"
+          />
+
+          <h2>
+            5. Thanh Thanh Tùng Stone – Đơn Vị Cung Cấp Đá Tự Nhiên Uy Tín 🏆
+          </h2>
+
+          <p>
+            Thanh Thanh Tùng Stone chuyên cung cấp các dòng đá xanh đen, đá xanh
+            rêu Thanh Hóa và nhiều loại đá tự nhiên chất lượng cao phục vụ cho
+            công trình sân vườn, biệt thự, resort và hạ tầng ngoài trời trên
+            toàn quốc.
+          </p>
+
+          <p>
+            Chúng tôi cam kết mang đến sản phẩm tuyển chọn kỹ lưỡng, gia công
+            đúng quy cách cùng mức giá tại xưởng cạnh tranh. Ngoài ra, khách
+            hàng còn được hỗ trợ tư vấn lựa chọn mẫu đá phù hợp với từng nhu cầu
+            sử dụng thực tế. 🚛
+          </p>
+
+          <p>
+            Nếu bạn đang tìm kiếm giải pháp đá tự nhiên bền đẹp và thẩm mỹ cho
+            công trình của mình, hãy liên hệ ngay với Thanh Thanh Tùng Stone để
+            được hỗ trợ nhanh chóng và tận tình nhất. 🌟
+          </p>
+
+          <div class="contact-box">
+            <!-- <h3>Thanh Thanh Tùng Stone</h3> -->
+            <!-- <p>
+                Chuyên cung cấp và thi công đá tự nhiên cao cấp cho sân vườn,
+                resort, biệt thự và các công trình cảnh quan trên toàn quốc.
+              </p> -->
+
+            <p><i class="fa fa-phone"></i> Hotline: 097 929 8888</p>
+
+            <p>
+              <i class="fa fa-globe"></i>
+              Website:
+              <a class="web" href="https://thanhthanhtungstone.com/">
+                thanhthanhtungstone.com
+              </a>
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-col">
+          <h3>Về Chúng Tôi</h3>
+          <p>
+            Thanh Thanh Tùng Stone chuyên cung cấp và thi công các dòng đá tự
+            nhiên cao cấp cho các dự án resort và hạ tầng đô thị trọng điểm trên
+            toàn quốc.
+          </p>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/thanhthanhtungstone/"
+              target="_blank"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UC8E7mggj7YxDRduZHAtw1xw"
+              target="_blank"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Sản Phẩm Chính</h3>
+          <ul>
+            <li>
+              <a href="https://thanhthanhtungstone.com/chat-lieu/da-xanh-den"
+                >Đá xanh đen</a
+              >
+            </li>
+            <li>
+              <a href="https://thanhthanhtungstone.com/chat-lieu/da-xanh-reu"
+                >Đá xanh rêu</a
+              >
+            </li>
+            <li>
+              <a href="https://thanhthanhtungstone.com/chat-lieu/da-bazan"
+                >Đá bazan</a
+              >
+            </li>
+            <li>
+              <a href="https://thanhthanhtungstone.com/chat-lieu/da-soc-dua"
+                >Đá sọc dưa</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://thanhthanhtungstone.com/chat-lieu/da-marble-tu-nhien"
+                >Đá marble</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Liên Hệ</h3>
+          <p>
+            <i class="fa fa-map-marker-alt"></i> 228, đường Trịnh Huy Quang,
+            phường Đông Quang, Tỉnh Thanh Hóa
+          </p>
+          <p><i class="fa fa-phone"></i> 097 929 8888</p>
+          <p><i class="fa fa-envelope"></i> thanhthanhtungstones@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Thanh Thanh Tùng Stone.</p>
+      </div>
+    </footer>
+  </body>
+</html>
